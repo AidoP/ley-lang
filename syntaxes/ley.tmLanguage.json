@@ -1,0 +1,57 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Ley",
+	"patterns": [
+		{
+			"include": "#comment"
+		},
+		{
+			"include": "#escape_strings"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#line"
+		}
+	],
+	"repository": {
+		"escape_strings": {
+			"name": "string.quoted.triple.ley",
+			"begin": "\"\"",
+			"end": "\"\""
+		},
+		"strings": {
+			"name": "string.quoted.double.ley",
+			"begin": "\"",
+			"end": "\""
+		},
+		"line": {
+			"begin": "!(.*?):(.*?){",
+			"end": "}",
+			"beginCaptures": {
+				"1": {
+					"name": "support.class.ley",
+					"patterns": [{"include": "source.ley"}]
+				},
+				"2": {
+					"name": "constant.language.ley",
+					"patterns": [{
+						"name": "keyword.control.ley",
+						"match": "(meta|link|image|paragraph|section)"
+					}]
+				}
+			},
+			"patterns": [
+				{ "include": "source.ley" }
+			]
+		},
+		"comment": {
+			"begin": "!.*?;.*?{",
+			"end": "}",
+			"name": "comment.block.documentation",
+			"patterns": [{"include": "source.ley"}]
+		}
+	},
+	"scopeName": "source.ley"
+}

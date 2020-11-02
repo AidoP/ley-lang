@@ -1,0 +1,25 @@
+{
+    "name": "ley",
+    "displayName": "ley",
+    "description": "Language Support for Ley",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.50.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "ley",
+            "aliases": ["Ley", "ley"],
+            "extensions": [".ley"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "ley",
+            "scopeName": "source.ley",
+            "path": "./syntaxes/ley.tmLanguage.json"
+        }]
+    }
+}
